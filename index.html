@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Candidate List</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+<div class="table-responsive">
+<h1>Candidates List</h1>
+<br/>
+<table class="table table-bordered table-striped" id="candidate_table">
+<tr>
+<th>name</th>
+<th>pgroup</th>
+<th>pname</th>
+</tr>
+</table>
+</div>
+</div>
+</body>
+</html>
+<script>
+$(document).ready(function(){
+$.getJSON('candidate.json',function(data){
+var candidate_data='';
+$.each(data,function(key,value){
+candidate_data += '<tr>';
+candidate_data += '<td>'+value.name+'</td>';
+candidate_data += '<td>'+value.pgroup+'</td>';
+candidate_data += '<td>'+value.pname+'</td>';
+candidate_data += '</tr>';
+});
+$('#candidate_table').append(candidate_data);
+});
+});
+</script>
